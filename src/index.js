@@ -1,14 +1,63 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, defer, RouterProvider } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(
+import Layout from "./components/Layout";
+import "./index.css";
+
+import Home from "./components/home/Home.js";
+import Chats from "./components/chats/Chats.js";
+import Chat from "./components/chat/Chat.js";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        loader: async () => {
+          const res = await fetch(
+            "https://app-fps7xsgziq-uc.a.run.app/api/users"
+          );
+          const users = await res.json();
+          return defer({ users });
+        },
+        element: <Home />,
+      },
+      {
+        path: "chats",
+        loader: async () => {
+          const res = await fetch(
+            "https://app-fps7xsgziq-uc.a.run.app/api/chats"
+          );
+          const chats = await res.json();
+          return defer({ chats });
+        },
+        element: <Chats />,
+      },
+      {
+        path: "chat/:id",
+        loader: async ({ params }) => {
+          const res = await fetch(
+            "https://app-fps7xsgziq-uc.a.run.app/api/chats"
+          );
+          const chat = await res.json();
+          return defer({ chat });
+        },
+        element: <Chat />,
+      },
+    ],
+  },
+]);
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
