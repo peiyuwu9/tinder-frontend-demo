@@ -27,9 +27,14 @@ const TinderCards = forwardRef(function TinderCards({ users }, ref) {
     ref,
     () => {
       return {
+        currentIndex,
+        refreshIndex(userLength) {
+          setCurrentIndex(userLength - 1);
+        },
         async swipe(direction) {
           if (currentIndex < 0) return;
           await tinderCardRefs[currentIndex].current.swipe(direction);
+          setCurrentIndex(currentIndex - 1);
         },
       };
     },

@@ -17,7 +17,7 @@ function formatTimestamp(timestamp) {
 
 function Chat({ id, name, img_url, last_msg, timestamp }) {
   return (
-    <Link className="chat" to={`/chat/${id}`}>
+    <Link className="chat-banner" to={`/chat/${id}`}>
       <Avatar alt={name} src={img_url} />
       <div className="chat-detail">
         <h3>{name}</h3>
