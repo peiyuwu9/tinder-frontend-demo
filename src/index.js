@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         path: "chat/:id",
         loader: async ({ params }) => {
           const res = await fetch(
-            "https://app-fps7xsgziq-uc.a.run.app/api/chats"
+            `https://app-fps7xsgziq-uc.a.run.app/api/chat/${params.id}`
           );
           const chat = await res.json();
           return defer({ chat });

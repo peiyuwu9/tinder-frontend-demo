@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import TinderCards from "./TinderCards";
@@ -7,13 +7,12 @@ import "./Home.css";
 
 function Home() {
   const { users } = useLoaderData();
-  const [userList, setUserList] = useState(users);
   const tinderCardRef = useRef();
 
   return (
     <div className="home-content">
-      <TinderCards ref={tinderCardRef} users={userList} />
-      <SwipeButton tinderCardRef={tinderCardRef} users={userList} setUsers={setUserList} />
+      <TinderCards ref={tinderCardRef} data={users} />
+      <SwipeButton tinderCardRef={tinderCardRef} />
     </div>
   );
 }

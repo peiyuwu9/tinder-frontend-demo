@@ -1,0 +1,23 @@
+.chat-window {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.chat-window p {
+  display: inline;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.left-chat {
+  margin-right: auto;
+  background-color: pink;
+}
+
+.right-chat {
+  margin-left: auto;
+  background-color: aqua;
+}

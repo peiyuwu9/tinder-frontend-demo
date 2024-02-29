@@ -6,7 +6,7 @@ import "./Chats.css";
 
 function Chats() {
   const { chats } = useLoaderData();
-  console.log(chats);
+
   return (
     <div className="chats-container">
       {chats.map(({ _id, name, img_url, last_msg, timestamp }) => (
