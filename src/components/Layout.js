@@ -14,7 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
 import "./Layout.css";
 
-function Layout() {
+function Layout({ notFound }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -46,7 +46,9 @@ function Layout() {
           </Link>
         </div>
         <div className="content">
-          {navigation.state === "loading" ? (
+          {notFound ? (
+            <div>Page Not Found</div>
+          ) : navigation.state === "loading" ? (
             <CircularProgress color="inherit" />
           ) : (
             <Outlet />

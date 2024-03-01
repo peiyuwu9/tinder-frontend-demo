@@ -1,0 +1,29 @@
+.input {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  border-top: 1px solid #e5e5ea;
+  transform: translateX(-10px);
+}
+
+.input-field {
+  flex: 1;
+  border: none;
+}
+
+.input-button {
+  border: none;
+  background-color: #fff;
+  font-weight: 700;
+  color: red;
+}
+
+input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 400px) {
+  .input {
+    transform: translate(-10px, 13px);
+  }
+}

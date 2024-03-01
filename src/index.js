@@ -44,11 +44,14 @@ const router = createBrowserRouter([
             `https://app-fps7xsgziq-uc.a.run.app/api/chat/${params.id}`
           );
           const chat = await res.json();
+          if (Object.values(chat).length === 0)
+            throw new Error("Page Not Found");
           return defer({ chat });
         },
         element: <Chat />,
       },
     ],
+    errorElement: <Layout notFound={true} />,
   },
 ]);
 
