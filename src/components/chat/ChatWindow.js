@@ -25,9 +25,8 @@ const ChatWindow = forwardRef(function ChatWindow({ chat }, ref) {
           });
           return [...prevConv];
         });
-        console.log(chat);
         await fetch(
-          `http://127.0.0.1:5001/tinder-demo-6f22c/us-central1/app/api/chat/${chat._id}`,
+          `https://app-fps7xsgziq-uc.a.run.app/api/chat/${chat._id}`,
           { method: "PUT", body: JSON.stringify(msg) }
         );
       },
